@@ -1,0 +1,38 @@
+<!--
+  ~ /**
+  ~  *Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  ~
+  ~  */
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M355.724,384.775c-99.313,0 -179.823,-80.51 -179.823,-179.823c0,-62.061 31.44,-116.78 79.261,-149.097c-5.542,-0.403 -11.139,-0.611 -16.784,-0.611C112.248,55.244 10,157.492 10,283.622S112.248,512 238.378,512c101.368,0 187.31,-66.044 217.147,-157.449C426.97,373.639 392.649,384.775 355.724,384.775z"/>
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M439.463,94.007l56.002,-94.007l-102.465,0l0,30l49.674,0l-56.002,94.007l115.328,0l0,-30z"/>
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M353.742,114.257l-92.651,0l0,30l39.86,0l-43.216,72.543l95.023,0l0,-30l-42.232,0z"/>
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M409.572,284.758l27.353,-45.915l-77.415,0l0,30l24.624,0l-27.353,45.915l81.229,0l0,-30z"/>
+</vector>

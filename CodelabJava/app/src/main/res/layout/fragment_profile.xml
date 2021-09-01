@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  *Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  ~
+  ~  */
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ui.MainActivity">
+
+   <ImageView
+       android:id="@+id/profileImageView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/placeholder_avatar"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.498"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.061" />
+
+   <TextView
+       android:id="@+id/profileNameTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="28dp"
+       android:text="@string/profile_name"
+       android:textSize="20sp"
+       android:textStyle="bold"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.498"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+
+   <TextView
+       android:id="@+id/settingsTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="12dp"
+       android:text="@string/settings"
+       android:textAllCaps="true"
+       android:textSize="20sp"
+       android:textStyle="bold"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.05"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/profileNameTv" />
+
+   <TextView
+       android:id="@+id/setNotificationTimeTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="16dp"
+       android:text="@string/set_notification_time"
+       android:textAllCaps="true"
+       android:textSize="20sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.087"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/settingsTv" />
+
+   <TextView
+       android:id="@+id/sleepTimeTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="12dp"
+       android:text="@string/sleep_time"
+       android:textAllCaps="true"
+       android:textSize="20sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.054"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/setNotificationTimeTv" />
+
+   <TextView
+       android:id="@+id/sleepTimeValTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="12dp"
+       android:text="@string/sleep_time_value"
+       android:textAllCaps="true"
+       android:textSize="20sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.931"
+       app:layout_constraintStart_toEndOf="@+id/sleepTimeTv"
+       app:layout_constraintTop_toBottomOf="@+id/setNotificationTimeTv" />
+
+   <TextView
+       android:id="@+id/notificationInfoTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="4dp"
+       android:text="@string/sleep_time_notification_info"
+       android:textAllCaps="false"
+       android:textSize="14sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.168"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/sleepTimeTv" />
+
+   <TextView
+       android:id="@+id/wakeUpTime"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:text="@string/wake_up_time"
+       android:textAllCaps="true"
+       android:textSize="20sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.059"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/notificationInfoTv" />
+
+   <TextView
+       android:id="@+id/wakeUpTimeValTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="24dp"
+       android:text="@string/wake_up_time_value"
+       android:textAllCaps="true"
+       android:textSize="20sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.921"
+       app:layout_constraintStart_toEndOf="@+id/wakeUpTime"
+       app:layout_constraintTop_toBottomOf="@+id/notificationInfoTv" />
+
+   <TextView
+       android:id="@+id/notificationInfoTv2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="4dp"
+       android:text="@string/wake_up_time_notification_info"
+       android:textAllCaps="false"
+       android:textSize="14sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.207"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/wakeUpTime" />
+
+   <TextView
+       android:id="@+id/alarmTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:text="@string/alarm_text"
+       android:textAllCaps="true"
+       android:textSize="20sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.043"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/notificationInfoTv2" />
+
+   <androidx.appcompat.widget.SwitchCompat
+       android:id="@+id/alarmClockSwitch"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.939"
+       app:layout_constraintStart_toEndOf="@+id/alarmTv"
+       app:layout_constraintTop_toBottomOf="@+id/notificationInfoTv2"
+       android:scaleX="1.2"
+       android:scaleY="1.2"/>
+
+   <TextView
+       android:id="@+id/alarmInfoTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/alarm_switch_info"
+       app:layout_constraintEnd_toEndOf="parent"
+       android:paddingStart="10dp"
+       android:paddingEnd="10dp"
+       app:layout_constraintHorizontal_bias="0.11"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/alarmTv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

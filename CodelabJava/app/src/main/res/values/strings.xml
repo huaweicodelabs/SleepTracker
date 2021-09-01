@@ -1,0 +1,80 @@
+<!--
+  ~ /**
+  ~  *Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  ~
+  ~  */
+  ~
+  -->
+
+<resources>
+    <string name="app_name">SleepTracker</string>
+    <string name="sign_in_huawei">Sign in with Huawei ID</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="settings">Settings</string>
+    <string name="set_notification_time">Set Notification Time</string>
+    <string name="sleep_time">Sleep Time:</string>
+    <string name="sleep_time_value">23:00</string>
+    <string name="sleep_time_notification_info">Notification will send 30 minutes before sleep time</string>
+    <string name="wake_up_time">Wake Up Time:</string>
+    <string name="wake_up_time_value">07:00</string>
+    <string name="wake_up_time_notification_info">Notification will send 30 minutes after wake up time</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_sleep_data">There is no sleep data for this day</string>
+    <string name="total_time_sleep_ref">References: 6–10 h</string>
+    <string name="deep_sleep_ref">References: 20–60%</string>
+    <string name="light_sleep_ref">References: &lt; 55%</string>
+    <string name="rem_sleep_ref">References: 10–30%</string>
+    <string name="awake_time_ref">References: 0–2 times</string>
+    <string name="sleep_suggestions">
+        \u0020Expose yourself to natural light in the day. \n
+        Relax and clear your mind in the evening \n
+        Don’t eat late in the evening \n
+        Try to sleep and wake at consistent times \n
+    </string>
+    <string name="ref_explanation">Blue: Low - Red: High - Black: Normal</string>
+    <string name="sleep_time_placeholder">You sleep 000 hours 000 minutes</string>
+    <string name="sleep_score_placeholder">000</string>
+    <string name="sleep_score">Sleep Score</string>
+    <string name="time_placeholder">00:00</string>
+    <string name="bed_time">Bed Time</string>
+    <string name="wake_up_time_text">Wake Up Time</string>
+    <string name="total_sleep_text">Total Sleep Time:</string>
+    <string name="deep_sleep_text">Deep Sleep: </string>
+    <string name="light_sleep_text">Light Sleep: </string>
+    <string name="rem_sleep_text">Rem Sleep: </string>
+    <string name="awake_text">Awake: </string>
+    <string name="alarm_text">Alarm</string>
+    <string name="alarm_switch_info">If selected an alarm will ring between wake-up time and the
+        lightest time of your sleep.</string>
+    <string name="placeholder_score">000</string>
+    <string name="placeholder_deep_sleep">Deep Sleep</string>
+    <string name="placeholder_light_sleep">Light Sleep</string>
+    <string name="placeholder_rem_sleep">Rem Sleep</string>
+    <string name="placeholder_sleep_score">Sleep Score</string>
+    <!-- CODE MESSAGES   -->
+    <string name="view_model_sign_success">observeViewModel: sign result success</string>
+    <string name="view_model_sign_failed">observeViewModel: sign in result error</string>
+    <string name="transmit_token_success">transmitTokenIntoAppGalleryConnect result success</string>
+    <string name="loading">Loading</string>
+    <string name="check_authorize_success">checkOrAuthorizeHealth get result success</string>
+    <string name="check_authorize_exception">checkOrAuthorizeHealth has exception</string>
+    <string name="query_authorized">queryHealthAuthorization get result is authorized</string>
+    <string name="query_not_authorized">queryHealthAuthorization get result is unauthorized</string>
+    <string name="query_exception">queryHealthAuthorization has exception"</string>
+    <string name="auth_not_resolve">can not resolve HUAWEI Health Auth Activity</string>
+    <string name="sleep_tracker">Sleep Tracker</string>
+    <string name="sample_header">Sample Header</string>
+    <string name="sample_description">Sample description</string>
+</resources>
