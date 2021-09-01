@@ -55,25 +55,13 @@ class HuaweiAccountServiceImpl(
     private val mapper = HuaweiAccountMapper()
 
     init {
-        val params = HuaweiIdAuthParamsHelper(
-            HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM
-        )
-            .setAccessToken()
-            .setScopeList(getScopes())
-            .setIdToken()
-            .setEmail()
-            .createParams()
-
+        TODO("Create a new HuaweiIdAuthParams and set this variables.")
         mHuaweiIdAuthService = HuaweiIdAuthManager.getService(context, params)
     }
 
 
     private fun getScopes(): MutableList<Scope> {
-        val scopeList: MutableList<Scope> = LinkedList()
-        scopeList.add(HuaweiIdAuthAPIManager.HUAWEIID_BASE_SCOPE) // Basic account permissions.
-        scopeList.add(Scope(Scopes.HEALTHKIT_SLEEP_READ))
-        scopeList.add(Scope(Scopes.HEALTHKIT_STEP_READ))
-        return scopeList
+        TODO("Create a scope list and return it with  Sleep Read and Base Scope")
     }
 
 
@@ -137,21 +125,16 @@ class HuaweiAccountServiceImpl(
     override fun readToday(): Single<SampleSet> {
 
         return Single.create { emitter ->
-            val todaySummaryTask = dataController.readTodaySummation(DataType.DT_CONTINUOUS_SLEEP)
-            todaySummaryTask.addOnSuccessListener { sampleSet ->
-                emitter.onSuccess(sampleSet)
+            TODO("Create a today summary task as SampleSet with data controller's read today summation for continuous sleep")
+            TODO("Add onSuccessListener and onFailureListener to this task.")
             }
-            todaySummaryTask.addOnFailureListener { exception ->
-                if (exception.message!!.contains("50005")) {
-                    emitter.onError(exception)
-                }
-            }
-        }
     }
 
     override fun readDailyData(startTime: Int, endTime: Int): Single<SampleSet> {
 
         return Single.create { emitter ->
+            TODO("Create a daily summary task as SampleSet with data controller's read daily summation for continuous sleep with start and end time")
+            TODO("Add onSuccessListener and onFailureListener to this task.")
             val dailySummationTask =
                 dataController.readDailySummation(
                     DataType.DT_CONTINUOUS_SLEEP,
@@ -173,31 +156,7 @@ class HuaweiAccountServiceImpl(
 
         val healthAppSettingDataShareHealthKitActivityScheme =
             "huaweischeme://healthapp/achievement?module=kit"
-        // Check the Health authorization status. If the authorization has not been granted, display the authorization screen in the HUAWEI Health app.
-        val authTask = mSettingController.healthAppAuthorization
-        authTask.addOnSuccessListener { result ->
-            if (Boolean.TRUE == result) {
-                Log.i(Constants.loginActivityTAG, context.getString(R.string.check_authorize_success))
-            } else {
-                // If the authorization has not been granted, display the authorization screen in the HUAWEI Health app.
-                val healthKitSchemaUri: Uri =
-                    Uri.parse(healthAppSettingDataShareHealthKitActivityScheme)
-                val healtIntent = Intent(Intent.ACTION_VIEW, healthKitSchemaUri)
-                // Check whether the authorization screen of the Health app can be displayed.
-                if (healtIntent.resolveActivity(context.packageManager) != null) {
-                    intent.invoke(healtIntent)
-                } else {
-                    Log.w(
-                        Constants.loginActivityTAG,
-                        context.getString(R.string.auth_not_resolve)
-                    )
-                }
-            }
-        }.addOnFailureListener { exception ->
-            if (exception != null) {
-                Log.i(Constants.loginActivityTAG, context.getString(R.string.check_authorize_exception))
-                Log.i(Constants.loginActivityTAG, exception.message.toString())
-            }
+        TODO("Create an auth task with onSuccessListener and onFailureListener. Open Health intent on success")
         }
     }
 

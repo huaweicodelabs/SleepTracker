@@ -75,42 +75,7 @@ class AlarmScanActivity : AppCompatActivity() {
     }
 
     private fun initScanKit(savedInstanceState: Bundle?) {
-        val dm = resources.displayMetrics
-        val density = dm.density
-        mScreenWidth = resources.displayMetrics.widthPixels
-        mScreenHeight = resources.displayMetrics.heightPixels
-
-        val scanFrameSize = (scanFrameSize * density)
-        val rect = Rect()
-        rect.left = (mScreenWidth / 2 - scanFrameSize / 2).toInt()
-        rect.right = (mScreenWidth / 2 + scanFrameSize / 2).toInt()
-        rect.top = (mScreenHeight / 2 - scanFrameSize / 2).toInt()
-        rect.bottom = (mScreenHeight / 2 + scanFrameSize / 2).toInt()
-
-        remoteView =
-            RemoteView.Builder().setContext(this).setBoundingBox(rect)
-                .setFormat(HmsScan.QRCODE_SCAN_TYPE).build()
-        remoteView?.onCreate(savedInstanceState)
-        remoteView?.setOnResultCallback { result -> //judge the result is effective
-
-            println("QR CODE : " + result[0].getOriginalValue())
-            if (result != null && result.isNotEmpty() && result[0] != null && !TextUtils.isEmpty(
-                    result[0].getOriginalValue()
-                ) && result[0].originalValue == Constants.alarmOffQRResult
-            ) {
-                val intentService = Intent(this, AlarmClock::class.java)
-                stopService(intentService)
-                finish()
-            }
-        }
-
-        val params =
-            FrameLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-            )
-
-        rim.addView(remoteView, params)
+        TODO("To obtain the QR Code, use RemoteView in the FrameLayout class of Scan Kit")
     }
 
 

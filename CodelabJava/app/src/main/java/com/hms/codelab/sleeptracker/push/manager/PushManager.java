@@ -61,17 +61,7 @@ public class PushManager {
         (new Thread() {
             public void run() {
                 try {
-                    String appId = AGConnectServicesConfig.fromContext(context).getString("client/app_id");
-                    pushToken = HmsInstanceId.getInstance(context).getToken(appId, "HCM");
-
-                    if (!TextUtils.isEmpty(pushToken)) {
-                        SharedPreferences sharedPreferences = context.getSharedPreferences(
-                                Constants.packageName,
-                                Context.MODE_PRIVATE
-                        );
-                        sharedPreferences.edit().putString(Constants.pushTokenStr, pushToken).apply();
-                        Log.i(Constants.pushServiceTAG, "Get Token: " + pushToken);
-                    }
+                    // TODO: Obtain the push token
                 } catch (Exception e) {
                     Log.i(Constants.pushServiceTAG, "DeviceIdToken failed, " + e.getMessage());
                 }
@@ -80,81 +70,14 @@ public class PushManager {
     }
 
     public static void getAccessToken(String sleepType, Context context) {
-        AccessTokenClient.getClient().create(AccessTokenInterface.class)
-                .createAccessToken(Constants.grantType, Constants.appSecret, Constants.appId).enqueue(
-                new Callback<AccessToken>() {
-                    @Override
-                    public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
-                        if (response.isSuccessful()) {
-                            if (response.body() != null) {
-                                SharedPreferences sharedPreferences = context.getSharedPreferences(
-                                        Constants.packageName,
-                                        Context.MODE_PRIVATE
-                                );
-                                String sharedPushToken = sharedPreferences.getString(Constants.pushTokenStr, pushToken);
-                                accessToken = response.body().getAccessToken();
-                                if (sharedPushToken != null) {
-                                    sendNotification(sharedPushToken, sleepType);
-                                }
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<AccessToken> call, Throwable t) {
-                        Log.e(Constants.pushServiceTAG, "Error: " + t.getMessage());
-                    }
-                }
-        );
+        // TODO: Store the access token through SharedPreferences
     }
 
     private static NotificationMessageBody selectNotificationMessageBody(String sleepType, String pushToken) {
-        Random rand = new Random();
-        switch (sleepType) {
-            case Constants.sleepStr:
-                return new NotificationMessageBody.Builder(
-                        Constants.goodNightTitle,
-                        Constants.goodNightBody.get(rand.nextInt(Constants.goodNightBody.size())),
-                        Collections.singletonList(pushToken)
-                ).build();
-            case Constants.wakeStr:
-                return new NotificationMessageBody.Builder(
-                        Constants.goodMorningTitle,
-                        Constants.goodMorningBody.get(rand.nextInt(Constants.goodNightBody.size())),
-                        Collections.singletonList(pushToken)
-                ).build();
-            case Constants.sleepReportStr:
-                return new NotificationMessageBody.Builder(
-                        Constants.sleepReportTitle,
-                        Constants.sleepReportBody,
-                        Collections.singletonList(pushToken)
-                ).build();
-            default:
-                return new NotificationMessageBody.Builder(
-                        Constants.notificationErrorTitle,
-                        Constants.notificationErrorBody,
-                        Collections.singletonList(pushToken)
-                ).build();
-        }
+        // TODO: Show notifications on the notification bar by NotificationCompat according to the sleep scenario
     }
 
     private static void sendNotification(String pushToken, String sleepType) {
-        NotificationClient.getClient().create(NotificationInterface.class)
-                .createNotification("Bearer " + accessToken,
-                        selectNotificationMessageBody(sleepType, pushToken)).enqueue(
-                new Callback<NotificationMessage>() {
-                    @Override
-                    public void onResponse(Call<NotificationMessage> call, Response<NotificationMessage> response) {
-                        if (response.isSuccessful()) {
-                            Log.d(Constants.pushServiceTAG, "Response " + response.body());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<NotificationMessage> call, Throwable t) {
-                        Log.e(Constants.pushServiceTAG, "Error: " + t.getMessage());
-                    }
-                }
-        );
+        // TODO: Send the notification
     }
 }

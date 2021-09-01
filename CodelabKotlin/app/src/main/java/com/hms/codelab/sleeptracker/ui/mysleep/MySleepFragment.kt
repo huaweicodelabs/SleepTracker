@@ -109,18 +109,10 @@ class MySleepFragment : Fragment() {
         viewModel.dailyDataResultLiveData.observe(viewLifecycleOwner, Observer {
             when (it?.responseType) {
                 Status.SUCCESSFUL -> {
-                    logger("Success read daily summation from HMS core")
-                    if (it.data!!.isEmpty) {
-                        setNoDataDisplay()
-                        sleepDataObj.sleepDate = Constants.defaultDate
-                    } else {
-                        it.data?.let { sampleSet -> cleanSampleSet(sampleSet) }
-                        setDataDisplay()
-                    }
-                    logger(splitSeparator)
+                    TODO("If data is empty set no data display otherwise clean the data and set data display")
                 }
                 Status.ERROR -> {
-                    viewModel.silentSignIn()
+                    TODO("Do silent sign in")
                 }
             }
         })

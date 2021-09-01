@@ -33,14 +33,7 @@ class PushNotificationService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val notification = NotificationCompat.Builder(this, Constants.CHANNEL_ID)
-            .setContentTitle(Constants.pushTitle)
-            .setContentText(Constants.pushBody)
-            .build()
-        startForeground(1001, notification)
-        PushManager.getAccessToken(intent!!.getStringExtra(Constants.sleepTypeStr)!!, this)
-        stopForeground(true)
-        return super.onStartCommand(intent, flags, startId)
+        TODO("Obtain the access token in onStart through NOTIFICATION_SERVICE")
     }
 
 

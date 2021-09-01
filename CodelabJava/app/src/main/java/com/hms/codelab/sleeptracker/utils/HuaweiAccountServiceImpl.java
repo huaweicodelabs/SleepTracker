@@ -79,16 +79,12 @@ public class HuaweiAccountServiceImpl implements AccountService {
         this.dataController = dataController;
         this.mSettingController = mSettingController;
         this.mapper = new HuaweiAccountMapper();
-        HuaweiIdAuthParams params = (new HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM))
-                .setAccessToken().setScopeList(this.getScopes()).setIdToken().setEmail().createParams();
+        // TODO create a new HuaweiIdAuthParams and set this variables.
         this.mHuaweiIdAuthService = HuaweiIdAuthManager.getService(this.context, params);
     }
 
     private List<Scope> getScopes() {
-        List<Scope> scopeList = new LinkedList<>();
-        scopeList.add(HuaweiIdAuthAPIManager.HUAWEIID_BASE_SCOPE);
-        scopeList.add(new Scope(Scopes.HEALTHKIT_SLEEP_READ));
-        return scopeList;
+        // TODO Create a scope list and return it with  Sleep Read and Base Scope
     }
 
     @Override
@@ -150,27 +146,16 @@ public class HuaweiAccountServiceImpl implements AccountService {
     @Override
     public Single<SampleSet> readToday() {
         return Single.create(emitter -> {
-            Task<SampleSet> todaySummaryTask = dataController.readTodaySummation(DataType.DT_CONTINUOUS_SLEEP);
-            todaySummaryTask.addOnSuccessListener(emitter::onSuccess);
-            todaySummaryTask.addOnFailureListener(e -> {
-                if (Objects.requireNonNull(e.getMessage()).contains("50005")) {
-                    emitter.onError(e);
-                }
-            });
+            // TODO Create a today summary task as SampleSet with data controller's read today summation for continuous sleep
+            // TODO Add onSuccessListener and onFailureListener to this task.
         });
     }
 
     @Override
     public Single<SampleSet> readDailyData(Integer startTime, Integer endTime) {
         return Single.create(emitter -> {
-            Task<SampleSet> dailySummaryTask = dataController
-                    .readDailySummation(DataType.DT_CONTINUOUS_SLEEP, startTime, endTime);
-            dailySummaryTask.addOnSuccessListener(emitter::onSuccess);
-            dailySummaryTask.addOnFailureListener(e -> {
-                if (Objects.requireNonNull(e.getMessage()).contains("50005")) {
-                    emitter.onError(e);
-                }
-            });
+            // TODO Create a daily summary task as SampleSet with data controller's read daily summation for continuous sleep with start and end time
+            // TODO Add onSuccessListener and onFailureListener to this task.
         });
     }
 
@@ -202,29 +187,6 @@ public class HuaweiAccountServiceImpl implements AccountService {
     public void checkOrAuthorizeHealth(Function1<Intent, Void> intent) {
         String healthAppSettingDataShareHealthKitActivityScheme =
                 "huaweischeme://healthapp/achievement?module=kit";
-        Task<Boolean> authTask = mSettingController.getHealthAppAuthorization();
-        authTask.addOnSuccessListener(aBoolean -> {
-            if (Boolean.TRUE.equals(aBoolean)) {
-                Log.i(Constants.loginActivityTAG, context.getString(R.string.check_authorize_success));
-            } else {
-                Uri healthKitSchemaUri = Uri.parse(healthAppSettingDataShareHealthKitActivityScheme);
-                Intent healthIntent = new Intent(Intent.ACTION_VIEW, healthKitSchemaUri);
-                if (healthIntent.resolveActivity(context.getPackageManager()) != null) {
-                    intent.invoke(healthIntent);
-                } else {
-                    Log.w(
-                            Constants.loginActivityTAG,
-                            context.getString(R.string.auth_not_resolve)
-                    );
-                }
-            }
-        });
-        authTask.addOnFailureListener(e -> {
-            if (e != null) {
-                Log.i(Constants.loginActivityTAG, context.getString(R.string.query_exception));
-                Log.i(Constants.loginActivityTAG, e.getMessage());
-            }
-        });
-
+        // TODO Create an auth task with onSuccessListener and onFailureListener. Open Health intent on success
     }
 }

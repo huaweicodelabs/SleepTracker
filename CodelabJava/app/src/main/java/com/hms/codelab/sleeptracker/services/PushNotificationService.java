@@ -32,15 +32,7 @@ public class PushNotificationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Notification notification = new NotificationCompat.Builder(this, Constants.CHANNEL_ID)
-                .setContentTitle(Constants.pushTitle)
-                .setContentText(Constants.pushBody)
-                .build();
-        startForeground(1001, notification);
-        if (intent != null) {
-            PushManager.getAccessToken(intent.getStringExtra(Constants.sleepTypeStr), this);
-        }
-        stopForeground(true);
+        // TODO: Obtain the access token in onStart through NOTIFICATION_SERVICE
         return super.onStartCommand(intent, flags, startId);
     }
 

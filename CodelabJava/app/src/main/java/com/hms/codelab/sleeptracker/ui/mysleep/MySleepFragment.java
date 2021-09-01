@@ -118,20 +118,9 @@ public class MySleepFragment extends Fragment {
         viewModel.getValue().dailyDataResultLiveData.observe(getViewLifecycleOwner(), sampleSetData -> {
             switch (sampleSetData.getResponseType()) {
                 case ERROR:
-                    viewModel.getValue().silentSignIn();
+                    // TODO Do silent sign in
                 case SUCCESSFUL:
-                    logger("Success read daily summation from HMS core");
-                    assert sampleSetData.getData() != null;
-                    if (sampleSetData.getData().isEmpty()) {
-                        setNoDataDisplay();
-                        sleepDataObj.sleepDate = Constants.defaultDate;
-                    } else {
-                        if (sampleSetData.getData() != null) {
-                            cleanSampleSet(sampleSetData.getData());
-                        }
-                        setDataDisplay();
-                    }
-                    logger(splitSeparator);
+                    // TODO If data is empty set no data display otherwise clean the data and set data display
                 case LOADING:
                     Log.i(Constants.mySleepFragmentTAG, "Loading");
             }

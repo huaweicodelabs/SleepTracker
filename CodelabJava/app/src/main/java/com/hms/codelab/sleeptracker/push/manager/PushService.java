@@ -30,30 +30,13 @@ public class PushService extends HmsMessageService {
     @Override
     public void onNewToken(String token) {
         super.onNewToken(token);
-        if (!TextUtils.isEmpty(token)) {
-            SharedPreferences sharedPreferences = this.getSharedPreferences(
-                    Constants.packageName,
-                    Context.MODE_PRIVATE
-            );
-            sharedPreferences.edit().putString("pushToken", token).apply();
-        }
-        Log.i(Constants.pushServiceTAG, "Receive Token: " + token);
+        // TODO: Receiving messages from NOTIFICATION_SERVICE and obtaining the push token
     }
 
     @Override
     public void onMessageReceived(RemoteMessage message) {
         super.onMessageReceived(message);
 
-        if (message != null) {
-            Log.i(
-                    Constants.pushServiceTAG, "getCollapseKey: " + message.getCollapseKey()
-                            + "\n getData: " + message.getData()
-                            + "\n getFrom: " + message.getFrom()
-                            + "\n getTo: " + message.getTo()
-                            + "\n getMessageId: " + message.getMessageId()
-                            + "\n getSendTime: " + message.getSentTime()
-                            + "\n getMessageType: " + message.getMessageType()
-                            + "\n getTtl: " + message.getTtl());
-        }
+        // TODO: Read messages
     }
 }

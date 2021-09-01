@@ -42,18 +42,7 @@ class PushManager {
             object : Thread() {
                 override fun run() {
                     try {
-                        val appId: String =
-                            AGConnectServicesConfig.fromContext(context).getString("client/app_id")
-                        pushToken = HmsInstanceId.getInstance(context).getToken(appId, "HCM")
-
-                        if (!TextUtils.isEmpty(pushToken)) {
-                            val sharedPreferences = context.getSharedPreferences(
-                                Constants.packageName,
-                                Context.MODE_PRIVATE
-                            )
-                            sharedPreferences.edit().putString(Constants.pushTokenStr, pushToken).apply()
-                            Log.i(Constants.pushServiceTAG, "get token: $pushToken")
-                        }
+                        TODO("Obtain the push token")
                     } catch (e: Exception) {
                         Log.i(Constants.pushServiceTAG, "DeviceIdToken failed, $e")
                     }
@@ -62,89 +51,18 @@ class PushManager {
         }
 
         fun getAccessToken(sleepType: String, context: Context) {
-            AccessTokenClient.getClient().create(AccessTokenInterface::class.java)
-                .createAccessToken(
-                    Constants.grantType,
-                    Constants.appSecret,
-                    Constants.appId
-                ).enqueue(object : Callback<AccessToken> {
-                    override fun onFailure(call: Call<AccessToken>, t: Throwable) {
-                        Log.e(Constants.pushServiceTAG, "Error: ${t.message}")
-                    }
-
-                    override fun onResponse(
-                        call: Call<AccessToken>,
-                        response: Response<AccessToken>
-                    ) {
-                        if (response.isSuccessful) {
-                            Log.d(
-                                Constants.pushServiceTAG,
-                                "Access Token: ${response.body()?.accessToken}"
-                            )
-                            val sharedPreferences = context.getSharedPreferences(
-                                Constants.packageName,
-                                Context.MODE_PRIVATE
-                            )
-                            val sharedPushToken = sharedPreferences.getString(Constants.pushTokenStr, pushToken)
-                            accessToken = response.body()?.accessToken
-                            sharedPushToken?.let { sendNotification(it, sleepType) }
-                        }
-                    }
-                })
+            TODO("Store the access token through SharedPreferences")
         }
 
         private fun selectNotificationMessageBody(
             sleepType: String,
             pushToken: String
         ): NotificationMessageBody {
-            when (sleepType) {
-                Constants.sleepStr -> {
-                    return NotificationMessageBody.Builder(
-                        Constants.goodNightTitle, Constants.goodNightBody[((0..4).random())],
-                        arrayOf(pushToken)
-                    ).build()
-                }
-                Constants.wakeStr -> {
-                    return NotificationMessageBody.Builder(
-                        Constants.goodMorningTitle,
-                        Constants.goodMorningBody[(0..5).random()],
-                        arrayOf(pushToken)
-                    ).build()
-                }
-                Constants.sleepReportStr -> {
-                    return NotificationMessageBody.Builder(
-                        Constants.sleepReportTitle, Constants.sleepReportBody,
-                        arrayOf(pushToken)
-                    ).build()
-                }
-                else -> {
-                    return NotificationMessageBody.Builder(
-                        Constants.notificationErrorTitle, Constants.notificationErrorBody,
-                        arrayOf(pushToken)
-                    ).build()
-                }
-            }
+            TODO("Show notifications on the notification bar by NotificationCompat")
         }
 
         private fun sendNotification(pushToken: String, sleepType: String) {
-            NotificationClient.getClient().create(NotificationInterface::class.java)
-                .createNotification(
-                    "Bearer $accessToken",
-                    selectNotificationMessageBody(sleepType, pushToken)
-                ).enqueue(object : Callback<NotificationMessage> {
-                    override fun onResponse(
-                        call: Call<NotificationMessage>,
-                        response: Response<NotificationMessage>
-                    ) {
-                        if (response.isSuccessful) {
-                            Log.d(Constants.pushServiceTAG, "Response ${response.body()}")
-                        }
-                    }
-
-                    override fun onFailure(call: Call<NotificationMessage>, t: Throwable) {
-                        Log.d(Constants.pushServiceTAG, "Error: ${t.message}")
-                    }
-                })
+            TODO("Send the notification")
         }
     }
 }
